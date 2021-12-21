@@ -1,0 +1,189 @@
+[
+    {
+        "id": "1",
+        "nickname": "MontyThePython6",
+        "password": "lol",
+        "players": [
+            {
+                "no": 1,
+                "name": "Jonas"
+            },
+            {
+                "no": 99,
+                "name": "Petras"
+            },
+            {
+                "no": 15,
+                "name": "Zigmas"
+            },
+            {
+                "no": 10,
+                "name": "Mantas"
+            },
+            {
+                "no": 41,
+                "name": "Jurgis"
+            }
+        ],
+        "formations": [
+            {
+                "5x5": [
+                    {
+                        "title": "gera sudetis",
+                        "coordinates": [
+                            [
+                                1,
+                                2
+                            ],
+                            [
+                                1,
+                                9
+                            ],
+                            [
+                                1,
+                                9
+                            ],
+                            [
+                                1,
+                                9
+                            ],
+                            [
+                                1,
+                                9
+                            ]
+                        ]
+                    },
+                    {
+                        "title": "bloga sudetis",
+                        "coordinates": [
+                            [
+                                1,
+                                2
+                            ],
+                            [
+                                1,
+                                9
+                            ],
+                            [
+                                1,
+                                9
+                            ],
+                            [
+                                1,
+                                9
+                            ],
+                            [
+                                1,
+                                9
+                            ]
+                        ]
+                    }
+                ],
+                "7x7": [
+                    {
+                        "title": "gera sudetis",
+                        "coordinates": [
+                            [
+                                1,
+                                2
+                            ],
+                            [
+                                1,
+                                9
+                            ],
+                            [
+                                1,
+                                9
+                            ],
+                            [
+                                1,
+                                9
+                            ],
+                            [
+                                1,
+                                9
+                            ]
+                        ]
+                    },
+                    {
+                        "title": "bloga sudetis",
+                        "coordinates": [
+                            [
+                                1,
+                                2
+                            ],
+                            [
+                                1,
+                                9
+                            ],
+                            [
+                                1,
+                                9
+                            ],
+                            [
+                                1,
+                                9
+                            ],
+                            [
+                                1,
+                                9
+                            ]
+                        ]
+                    }
+                ],
+                "11x11": [
+                    {
+                        "title": "gera sudetis",
+                        "coordinates": [
+                            [
+                                1,
+                                2
+                            ],
+                            [
+                                1,
+                                9
+                            ],
+                            [
+                                1,
+                                9
+                            ],
+                            [
+                                1,
+                                9
+                            ],
+                            [
+                                1,
+                                9
+                            ]
+                        ]
+                    },
+                    {
+                        "title": "bloga sudetis",
+                        "coordinates": [
+                            [
+                                1,
+                                2
+                            ],
+                            [
+                                1,
+                                9
+                            ],
+                            [
+                                1,
+                                9
+                            ],
+                            [
+                                1,
+                                9
+                            ],
+                            [
+                                1,
+                                9
+                            ]
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+]

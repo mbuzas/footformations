@@ -1,40 +1,42 @@
 const router = require('express').Router();
-let Formation = require('../models/formation.model');
+let UserFormation = require('../models/userFormation.model');
 
 router.route('/').get((req, res) => {
-    Formation.find()
+    UserFormation.find()
         .then(formations => res.json(formations))
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
 router.route('/add').post((req, res) => {
-    const formation = req.body.formation;
-    const players = req.body.players;
+    const title = req.body.title;
+    const type = req.body.type;
+    const user = req.body.user;
     const coordinates = req.body.coordinates;
 
-    const newFormation = new Formation({ formation, players, coordinates });
+    const newUserFormation = new UserFormation({ title, type, user, coordinates });
 
-    newFormation.save()
-        .then(() => res.json('Formation Added!'))
+    newUserFormation.save()
+        .then(() => res.json('User Formation Added!'))
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
 router.route('/:id').get((req, res) => {
-    Formation.findById(req.params.id)
+    UserFormation.findById(req.params.id)
         .then((formation) => res.json(formation))
         .catch((err => res.status(400).json('Error:' + err)));
 })
 router.route('/:id').delete((req, res) => {
-    Formation.findByIdAndDelete(req.params.id)
-        .then(() => res.json('Exercise deleted'))
+    UserFormation.findByIdAndDelete(req.params.id)
+        .then(() => res.json('USer Formation deleted'))
         .catch(err => res.status(400).json('Error' + err))
 })
 
 router.route('/update/:id').post((req, res) => {
-    Formation.findById(req.params.id)
+    UserFormation.findById(req.params.id)
         .then(formation => {
-            formation.formation = req.body.formation;
-            formation.players = req.body.players;
+            formation.title = req.body.title;
+            formation.type = req.body.type;
+            formation.user = req.body.user;
             formation.coordinates = req.body.coordinates;
 
             formation.save()

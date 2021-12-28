@@ -1,6 +1,25 @@
 .pitch {
-    width: 300px;
-    height: 500px;
-    background-color: green;
-    margin: 3em;
+    width: 40%;
+    /* height: 500px; */
+    margin: 0 3em 3em 3em;
+
+}
+
+.pitch img {
+    width: 100%;
+    border-radius: 0.5em;
+}
+
+.pitch-block {
+    position: relative;
+}
+
+.circle {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    background-color: red;
+    border-radius: 50%;
+    top: 100px;
+    left: 30px;
 }

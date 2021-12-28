@@ -1,0 +1,19 @@
+footer {
+    margin-bottom: 1em;
+    border-radius: 0 0 1em 1em;
+    background-color: #00A000;
+    width: 100%;
+    color: #fff;
+    font-size: 12px;
+}
+
+.footer-block {
+    padding: 2em 4em;
+    justify-content: space-between;
+    display: flex;
+}
+
+.export:hover, .webpage:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}

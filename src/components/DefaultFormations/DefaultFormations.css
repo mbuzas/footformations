@@ -1,6 +1,29 @@
-.df {
+.default-formations {
     width: 40%;
-    height: 100px;
-    background-color: green;
-    margin: 3em;
+    background-color: #cfcfcf;
+    margin: 1em 3em;
+}
+
+.formations-block {
+    display: flex;
+    justify-content: flex-start;
+    gap: 1em;
+}
+
+.formation {
+    display: flex;
+    align-items: center;
+    width: 50px;
+    flex-direction: column;
+}
+
+.formation-image {
+    width: 50px;
+    height: 50px;
+    background-color: #00A000;
+}
+
+.formation-title {
+    font-size: 0.75em;
+    font-weight: 700;
 }

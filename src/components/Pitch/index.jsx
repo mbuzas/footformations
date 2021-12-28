@@ -4,7 +4,12 @@ import './Pitch.css'
 const Pitch = () => {
     return (
         <div className='pitch'>
-            Pitch
+            <h3>Pitch</h3>
+            <div className="pitch-block">
+
+                <img src="/images/pitch.svg" alt="" />
+                <div className="circle"></div>
+            </div>
         </div>
     )
 }

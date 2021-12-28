@@ -19,10 +19,12 @@ connection.once('open', () => {
     console.log("MongoDB connection established successfully");
 })
 
-const formationsRouter = require('./routes/formations');
+const defaultFormationsRouter = require('./routes/defaultformations');
+const userFormationsRouter = require('./routes/userformations');
 const usersRouter = require('./routes/users');
 
-app.use('/formations', formationsRouter);
+app.use('/defaultformations', defaultFormationsRouter);
+app.use('/userformations', userFormationsRouter);
 app.use('/users', usersRouter);
 
 app.listen(port, () => {

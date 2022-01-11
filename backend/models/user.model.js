@@ -1,6 +1,7 @@
 
 
 const mongoose = require('mongoose');
+const userFormation = require('./userFormation.model.js');
 const { Schema } = mongoose;
 
 const userSchema = new Schema({
@@ -18,7 +19,8 @@ const userSchema = new Schema({
         }
     ],
     formations: {
-        id: { type: Schema.Types.ObjectId, ref: 'UserFormation' }
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'UserFormation'
     }
 }, {
     timestamps: true,
@@ -26,7 +28,12 @@ const userSchema = new Schema({
 
 
 const User = mongoose.model('User', userSchema);
-User.findOne({ username: 'Romas Žalnieraitis' })
-    .populate('formations')
-    .then(user => console.log(user))
+
+// userFormation.find({})
+//     .populate('formations')
+//     .exec(function (err, user) {
+//         console.log(user);
+//         // do something
+//     });
+
 module.exports = User;

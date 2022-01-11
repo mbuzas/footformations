@@ -1,0 +1,25 @@
+{
+    "username": "lopas"
+}
+
+
+
+
+{
+    "username": "robkes",
+    "players":
+    [
+        {
+        "no":1,
+        "name":"Robis"
+        },
+        {
+        "no":5,
+        "name":"Robis"
+        },
+        {
+        "no":71,
+        "name":"Robis"
+        }
+    ]
+}

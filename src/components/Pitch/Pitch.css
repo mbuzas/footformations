@@ -12,6 +12,7 @@
 
 .pitch-block {
     position: relative;
+    /* overflow: hidden; */
 }
 
 .circle {
@@ -22,4 +23,15 @@
     border-radius: 50%;
     top: 100px;
     left: 30px;
+}
+
+.futboliukas {
+    background-color: gold !important;
+    position: absolute;
+    z-index: 9999;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    background-color: red;
+    border-radius: 50%;
 }

@@ -34,8 +34,8 @@ const Pitch = () => {
         );
     };
     const DragTask = (e) => {
-        e.target.style.top = e.clientY - 100 + "px";
-        e.target.style.left = (e.clientX - 568) + "px";
+        e.target.style.top = e.clientY + "px";
+        e.target.style.left = (e.clientX) + "px";
     };
     const CreateOneBox = () => {
         CreateObject(

@@ -1,11 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import './Header.css'
+import appContext from '../../../context/appContext'
 const Header = () => {
+    const context = useContext(appContext)
+    console.log(context);
     return (
         <div className="row">
             <header>
                 <div className="logout-icon">LOGOUT→</div>
                 <div className="header-left">
+
                     Hello, <span> Mantveparlis</span>
                     <div className="logout">
                         Logout

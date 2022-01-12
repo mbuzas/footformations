@@ -9,7 +9,7 @@ const Players = () => {
                     <form action="">
                         <input type="text" name="" id="number" maxLength={2} placeholder='No.' />
                         <input type="text" name="" id="name" maxLength={20} placeholder='Name' />
-                        <button type='submit'>+</button>
+                        <button className='btn-players' type='submit'>+</button>
                     </form>
                 </div>
                 <table>

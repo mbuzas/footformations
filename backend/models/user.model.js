@@ -19,8 +19,10 @@ const userSchema = new Schema({
         }
     ],
     formations: {
+        // surast formacijas pagal userId ?
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'UserFormation'
+        ref: 'UserFormation',
+        required: true,
     }
 }, {
     timestamps: true,

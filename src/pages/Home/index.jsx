@@ -16,7 +16,7 @@ const Home = () => {
                 <div className='row'>
                     <DefaultFormations />
                     <UserFormations />
-
+                    
                 </div>
                 <div className='row'>
                     <Pitch />

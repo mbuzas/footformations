@@ -10,10 +10,10 @@ router.route('/').get((req, res) => {
 router.route('/add').post((req, res) => {
     const title = req.body.title;
     const type = req.body.type;
-    const user = req.body.user;
+    const createdBy = req.body.createdBy;
     const coordinates = req.body.coordinates;
 
-    const newUserFormation = new UserFormation({ title, type, user, coordinates });
+    const newUserFormation = new UserFormation({ title, type, createdBy, coordinates });
 
     newUserFormation.save()
         .then(() => res.json('User Formation Added!'))

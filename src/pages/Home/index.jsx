@@ -14,14 +14,15 @@ const Home = () => {
             <Header />
             <div className='home'>
                 <div className='row'>
-                    <DefaultFormations />
-                    <UserFormations />
-                    
-                </div>
-                <div className='row'>
                     <Pitch />
                     <Players />
                 </div>
+                <div className='row'>
+                    <DefaultFormations />
+                    <UserFormations />
+
+                </div>
+
             </div >
             <Footer />
         </>

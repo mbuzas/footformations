@@ -6,14 +6,12 @@ const DefaultFormations = () => {
         <div className='default-formations'>
             <h3>Default Formations</h3>
             <div className="formations-block">
-                <FormationTile />
-                <FormationTile />
-                <FormationTile />
-                <FormationTile />
-                <FormationTile />
-                <FormationTile />
-                <FormationTile />
-                <FormationTile />
+                <select name="" id="">
+                    <option selected disabled value="">select form</option>
+                    <option value="">4x3x1</option>
+                    <option value="">2x1x2x1</option>
+                    <option value="">5x1</option>
+                </select>
             </div>
         </div>
     )

@@ -17,25 +17,11 @@ const userSchema = new Schema({
             no: { type: Number },
             name: { type: String }
         }
-    ],
-    formations: {
-        // surast formacijas pagal userId ?
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'UserFormation',
-        required: true,
-    }
+    ]
 }, {
     timestamps: true,
 });
 
 
 const User = mongoose.model('User', userSchema);
-
-// userFormation.find({})
-//     .populate('formations')
-//     .exec(function (err, user) {
-//         console.log(user);
-//         // do something
-//     });
-
 module.exports = User;

@@ -15,7 +15,8 @@ router.route('/:id').get((req, res) => {
 router.route('/add').post((req, res) => {
     const username = req.body.username;
     const players = req.body.players;
-    // const formations = fitruoti reikia visa user formations;
+
+
     const newUser = new User({ username, players });
 
     newUser.save()

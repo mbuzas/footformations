@@ -1,5 +1,8 @@
 import React from 'react'
+import AddFormation from '../AddFormation'
 import './Players.css'
+
+
 const Players = () => {
     return (
         <div className='players'>
@@ -35,6 +38,7 @@ const Players = () => {
                     </tr>
                 </table>
             </div>
+            <AddFormation />
         </div>
     )
 }

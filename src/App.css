@@ -4,6 +4,7 @@
     justify-content: center;
     font-family: 'Open Sans', sans-serif;
     font-weight: 500;
+    height: 100vh;
     background-color: whitesmoke;
 }
 
@@ -14,9 +15,6 @@ main {
     justify-content: center;
     flex-direction: column;
 }
-
-
-
 
 
 @media (max-width: 1400px) {

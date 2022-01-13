@@ -21,10 +21,4 @@ const userFormationSchema = new Schema({
 });
 
 const userFormation = mongoose.model('userFormation', userFormationSchema);
-// User.find({})
-//     .populate('formations')
-//     .exec(function (err, user) {
-//         console.log(user);
-
-//     });
 module.exports = userFormation;

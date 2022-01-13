@@ -1,7 +1,6 @@
 .pitch {
     width: 40%;
-    /* height: 500px; */
-    margin: 0 3em 3em 3em;
+    margin: 0.5em 3em 0em 3em;
 
 }
 
@@ -11,8 +10,12 @@
 }
 
 .pitch-block {
-    position: relative;
-    /* overflow: hidden; */
+    background-image: url(pitch.svg);
+    background-size: contain;
+    width: 315px;
+    height: 475px;
+    /* margin: auto; */
+    border-radius: 8px;
 }
 
 .circle {
@@ -27,7 +30,6 @@
 
 .futboliukas {
     background-color: gold !important;
-    position: absolute;
     z-index: 9999;
     width: 30px;
     height: 30px;

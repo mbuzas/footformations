@@ -1,6 +1,7 @@
 
-const mongoose = require('mongoose');
-const User = require('./user.model.js');
+import mongoose from 'mongoose'
+import User from './user.model.js'
+
 const { Schema } = mongoose;
 
 const userFormationSchema = new Schema({
@@ -20,5 +21,4 @@ const userFormationSchema = new Schema({
         ]
 });
 
-const userFormation = mongoose.model('userFormation', userFormationSchema);
-module.exports = userFormation;
+export default mongoose.model('userFormation', userFormationSchema)

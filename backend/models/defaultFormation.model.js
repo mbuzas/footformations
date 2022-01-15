@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose'
 const { Schema } = mongoose;
 
 const defaultFormationSchema = new Schema({
@@ -13,6 +13,5 @@ const defaultFormationSchema = new Schema({
         ]
 });
 
-const defaultFormation = mongoose.model('defaultFormation', defaultFormationSchema);
 
-module.exports = defaultFormation;
+export default mongoose.model('defaultFormation', defaultFormationSchema)

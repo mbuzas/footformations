@@ -1,5 +1,7 @@
-const router = require('express').Router();
-let DefaultFormation = require('../models/defaultFormation.model');
+import express, { Router } from 'express'
+const router = express.Router();
+
+import DefaultFormation from '../models/defaultFormation.model.js'
 
 router.route('/').get((req, res) => {
     DefaultFormation.find()
@@ -43,5 +45,4 @@ router.route('/:id').delete((req, res) => {
 //         })
 //         .catch(err => res.status(400).json('Error: ' + err));
 // });
-
-module.exports = router;
+export default router

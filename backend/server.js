@@ -1,8 +1,10 @@
-const express = require('express');
-const cors = require('cors');
-const mongoose = require('mongoose');
-const bodyParser = require('body-parser')
-require('dotenv').config();
+import express from 'express';
+import cors from 'cors';
+import mongoose from 'mongoose'
+import bodyParser from 'body-parser';
+
+import dotenv from 'dotenv'
+dotenv.config()
 
 const app = express();
 const port = process.env.PORT || 5001;
@@ -19,9 +21,11 @@ connection.once('open', () => {
     console.log("MongoDB connection established successfully");
 })
 
-const defaultFormationsRouter = require('./routes/defaultformations');
-const userFormationsRouter = require('./routes/userformations');
-const usersRouter = require('./routes/users');
+
+
+import defaultFormationsRouter from './routes/defaultformations.js'
+import userFormationsRouter from './routes/userformations.js'
+import usersRouter from './routes/users.js'
 
 app.use('/defaultformations', defaultFormationsRouter);
 app.use('/userformations', userFormationsRouter);

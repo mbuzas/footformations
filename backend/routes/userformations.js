@@ -1,5 +1,6 @@
-const router = require('express').Router();
-let UserFormation = require('../models/userFormation.model');
+import express, { Router } from 'express'
+const router = express.Router();
+import UserFormation from '../models/userFormation.model.js'
 
 router.route('/').get((req, res) => {
     UserFormation.find()
@@ -46,4 +47,4 @@ router.route('/update/:id').post((req, res) => {
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
-module.exports = router;
+export default router

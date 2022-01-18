@@ -27,13 +27,3 @@
     top: 100px;
     left: 30px;
 }
-
-.futboliukas {
-    background-color: gold !important;
-    z-index: 9999;
-    width: 30px;
-    height: 30px;
-    position: absolute;
-    background-color: red;
-    border-radius: 50%;
-}

@@ -1,16 +1,28 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import './DefaultFormations.css'
-import FormationTile from '../FormationTile'
+
+import AppContext from '../../context/appContext'
 const DefaultFormations = () => {
+    const { defaultFormations, setSelectedFormation } = useContext(AppContext)
+    const context = useContext(AppContext)
+    console.log(context);
+
+
+    const handleSelect = (e) => {
+        setSelectedFormation(e.target.value)
+    }
     return (
         <div className='default-formations'>
             <h3>Default Formations</h3>
+
+
             <div className="formations-block">
-                <select name="" id="">
-                    <option selected disabled value="">select form</option>
-                    <option value="">4x3x1</option>
-                    <option value="">2x1x2x1</option>
-                    <option value="">5x1</option>
+                <select name="" onChange={handleSelect} id="" defaultValue='Default'>
+                    {defaultFormations.map((formation) => {
+                        return <option value={formation.title} key={formation._id}>{formation.title}</option>
+                    })}
+                    <option value="Default">Default</option>
+
                 </select>
             </div>
         </div>

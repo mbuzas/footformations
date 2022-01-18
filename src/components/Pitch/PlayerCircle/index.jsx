@@ -1,37 +1,9 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import AppContext from "../../../context/appContext";
 import './PlayerCircle.css'
 const PlayerCircle = (props) => {
-    const DUMMY_PLAYERS =
-        [
 
-            {
-                no: "99",
-                username: "Lukas"
-            },
-
-            {
-                no: "6",
-                username: "Rimas"
-            },
-
-            {
-                no: "45",
-                username: "Skaiva"
-            },
-
-            {
-                no: "64",
-                username: "Mantas"
-            },
-
-            {
-                no: "91",
-                username: "Egis"
-            }
-
-        ];
-
-    const [players, setPlayers] = useState(DUMMY_PLAYERS)
+    const { players } = useContext(AppContext)
     const { x, y } = props
 
     const randNum = Math.floor(Math.random() * 100)
@@ -44,37 +16,57 @@ const PlayerCircle = (props) => {
         ev.dataTransfer.setData("text", ev.target.id);
     }
 
-    const showPlayers = (ev) => {
 
-        const createSelect = React.createElement('select', {}, players)
-        // ev.target.append(createSelect)
+    // function getIndex(id) {
+    //     return selectedPlayers.findIndex(player => player._id === id);
+    // }
 
-        console.log(ev);
-        // players.map((player) => {
-        //     ev.target.innerHTML = player.no
-        //     ev.target.innerHTML = player.username
-        // })
+
+
+    const [selectedPlayers, setSelectedPlayers] = useState([])
+    useEffect(() => {
+        setSelectedPlayers([...players])
+        // console.log(selectedPlayers);
+    }, [players])
+
+
+
+    const handleSelect = (ev) => {
+        const selectedPlayer = ev.target.value
+
+        console.log(selectedPlayer);
+        console.log(selectedPlayers);
+
+
+        // Delete selected from dropdown
+        // const index = getIndex(selectedPlayer)
+        // if (index > -1) {
+        //     const updatedPlayers = selectedPlayers.splice(index, 1);
+        //     setSelectedPlayers([...selectedPlayers, updatedPlayers])
+        // }
 
 
 
     }
     return (
         <div
-            onClick={ev => { showPlayers(ev) }}
             className='futboliukas'
             draggable="true"
             style={{ top: y + "px", left: x + 'px' }}
             onDragStart={drag}
+            key={randNum}
             id={randNum}
             onDragEnd={e => {
                 DragTask(e);
             }}
-        ><p>+</p>
-            <select className="addSelect" name="" id="">
-                {players.map((player) => {
-                    console.log(player.no);
-                    return <option>{player.no} . {player.username}</option>
+        ><p>&nbsp;</p>
+            <select onChange={handleSelect} name="" id="" key={randNum} defaultValue='Select Player'>
+                {selectedPlayers.map((player) => {
+                    return <option value={player._id} key={player._id}>{player.no} . {player.name}</option>
                 })}
+                <option key={randNum} value="Select Player" disabled>
+                    Select Player
+                </option>
             </select>
         </div>
     )

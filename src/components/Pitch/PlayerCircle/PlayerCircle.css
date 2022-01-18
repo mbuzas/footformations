@@ -1,3 +1,27 @@
-.addSelect {
+/* .futboliukas select {
+    width: 12px;
+    border-radius: 50%;
+} */
+
+.futboliukas select {
+    border-radius: 8px;
+    padding: 4px;
+    margin-left: -2em;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: '';
     background-color: gold;
+}
+
+.futboliukas {
+    background-color: gold !important;
+    z-index: 9999;
+    width: 30px;
+    /* display: flex; */
+    justify-content: center;
+    height: 30px;
+    position: absolute;
+    background-color: red;
+    border-radius: 50%;
 }

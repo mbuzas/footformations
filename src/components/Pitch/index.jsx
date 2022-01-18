@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext } from 'react'
+import AppContext from '../../context/appContext';
 import './Pitch.css'
 import PlayerCircle from './PlayerCircle'
 
@@ -6,13 +7,13 @@ const formations =
     [
 
         {
-            x: "600",
-            y: "400"
+            x: "700",
+            y: "360"
         },
 
         {
-            x: "557",
-            y: "430"
+            x: "600",
+            y: "420"
         },
 
         {
@@ -35,30 +36,17 @@ const formations =
 
 const Pitch = () => {
 
+    const { defaultFormations, selectedFormation } = useContext(AppContext)
+    const index = getIndex(selectedFormation)
+    function getIndex(id) {
+        return selectedFormation.findIndex(formation => formation._id === id);
 
-
-    const [inputNo, setInputNo] = useState('')
-    const [inputName, setInputName] = useState('')
+    }
 
     const allowDrop = (ev) => {
         ev.preventDefault();
     }
 
-    const handleOnChangeNo = (e) => {
-        setInputNo(e.target.value);
-    }
-    const handleOnChangeName = (e) => {
-        setInputName(e.target.value);
-    }
-
-
-    const handleOnClick = (ev) => {
-        ev.preventDefault();
-        const newPlayer = { no: inputNo, username: inputName }
-        // setPlayers((prevPlayers) => {
-        //     return [...prevPlayers, newPlayer]
-        // })
-    }
 
     const onDrop = (ev) => {
         ev.preventDefault();
@@ -68,25 +56,20 @@ const Pitch = () => {
         dropzone.appendChild(draggableElement);
         ev.dataTransfer.clearData();
     }
+
     return (
 
         <div className='pitch'>
             <h3>Pitch</h3>
             {formations.map((formation) => {
-                return (<PlayerCircle x={formation.x} y={formation.y} />)
+                return (<PlayerCircle key={formation._id} x={formation.x} y={formation.y} />)
             })}
 
             <div className="pitch-block" onDragOver={allowDrop} onDrop={onDrop} >
 
             </div>
 
-            <div className="player-input">
-                <form action="">
-                    <input type="number" name="" id="number" maxLength={2} placeholder='No.' onChange={handleOnChangeNo} />
-                    <input type="text" name="" id="name" maxLength={20} placeholder='Name' onChange={handleOnChangeName} />
-                    <button className='btn-players' onClick={handleOnClick}>+</button>
-                </form>
-            </div>
+
         </div >
 
     )

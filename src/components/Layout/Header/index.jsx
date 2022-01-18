@@ -1,9 +1,8 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import './Header.css'
-import appContext from '../../../context/appContext'
+
 const Header = () => {
-    const context = useContext(appContext)
-    console.log(context);
+
     return (
         <div className="row">
             <header>

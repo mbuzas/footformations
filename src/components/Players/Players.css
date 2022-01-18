@@ -20,7 +20,9 @@
     position: relative;
 }
 
-
+table {
+    text-align: left;
+}
 
 input#number {
     width: 20%;

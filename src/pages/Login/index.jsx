@@ -1,5 +1,5 @@
-import { useContext, useState } from "react"
-import AppContext from "../../context/appContext"
+import { useState } from "react"
+
 import FormRow from '../../components/FormRow'
 import './Login.css'
 const initialState = {
@@ -11,7 +11,6 @@ const initialState = {
 
 
 const Login = () => {
-    // const context = useContext(AppContext)
 
     const [values, setValues] = useState(initialState)
 

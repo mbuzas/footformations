@@ -1,10 +1,7 @@
-import React, { useContext } from 'react'
+import React from 'react'
 
 
-const initialState = {
-    isLoading: false,
-    isMember: false,
-}
+const initialState = ''
 
 
 const AppContext = React.createContext(initialState)

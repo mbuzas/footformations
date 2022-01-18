@@ -36,12 +36,12 @@ const formations =
 
 const Pitch = () => {
 
-    const { defaultFormations, selectedFormation } = useContext(AppContext)
-    const index = getIndex(selectedFormation)
-    function getIndex(id) {
-        return selectedFormation.findIndex(formation => formation._id === id);
+    // const { defaultFormations, selectedFormation } = useContext(AppContext)
+    // const index = getIndex(selectedFormation)
+    // function getIndex(id) {
+    //     return selectedFormation.findIndex(formation => formation._id === id);
 
-    }
+    // }
 
     const allowDrop = (ev) => {
         ev.preventDefault();

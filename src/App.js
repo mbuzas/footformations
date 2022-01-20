@@ -24,13 +24,44 @@ function App() {
   const [isMember, setIsMember] = useState(checkIsMember())
   const [defaultFormations, setDefaultFormations] = useState([])
 
-  const [selectedFormation, setSelectedFormation] = useState('')
+  const [selectedFormationId, setSelectedFormationId] = useState('61e81a2ae5ff8cafe1a93497')
+  const [selectedFormation, setSelectedFormation] = useState(
+    [
+
+        {
+            x: "700",
+            y: "360"
+        },
+
+        {
+            x: "600",
+            y: "420"
+        },
+
+        {
+            x: "700",
+            y: "600"
+        },
+
+        {
+            x: "700",
+            y: "670"
+        },
+
+        {
+            x: "800",
+            y: "420"
+        }
+
+    ])
   const initialState = {
     isLoading: isLoading,
     isMember: isMember,
     defaultFormations: defaultFormations,
+    selectedFormationId: selectedFormationId,
     selectedFormation: selectedFormation,
     setSelectedFormation,
+    setSelectedFormationId,
     userInfo: userInfo,
     players: players,
     setPlayers

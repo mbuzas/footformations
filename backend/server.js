@@ -2,14 +2,21 @@ import express from 'express';
 import cors from 'cors';
 import mongoose from 'mongoose'
 import bodyParser from 'body-parser';
-
+import morgan from 'morgan'
 import dotenv from 'dotenv'
 dotenv.config()
 
 const app = express();
 const port = process.env.PORT || 5001;
 
+
+
 app.use(cors());
+
+if (process.env.NODE_ENV !== 'production') {
+    app.use(morgan('dev'))
+}
+
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 const uri = process.env.ATLAS_URI;

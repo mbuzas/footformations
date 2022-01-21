@@ -28,4 +28,23 @@ router.route('/add').post((req, res) => {
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
+router.route('/login').post(async (req, res) => {
+    const { email, password } = req.body;
+    if (!email || !password) {
+        console.log('pleasse fill all values');
+    }
+    const user = await User.findOne({ email }).select('+password')
+    // console.log(user);
+    if (!user) {
+        console.log('inavlid credentials');
+    }
+    const isPasswordCorrect = await user.comparePassword(password)
+    if (!isPasswordCorrect) {
+        console.log('inavlid credentials');
+    }
+    const token = user.createJWT()
+    user.password = undefined
+    res.status(200).json({ user, token })
+});
+
 export default router

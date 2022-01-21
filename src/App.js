@@ -8,52 +8,83 @@ import { useEffect, useState } from 'react';
 import Loading from './pages/Loading';
 import AppContext from './context/appContext'
 function App() {
-  const users = ['montis', 'romas', 'algis']
-  const user = 'montis'
-
 
 
   const [userInfo, setUserInfo] = useState('')
-
-  const checkIsMember = () => {
-    const isMember = users.includes(user)
-    return isMember
-  }
   const [players, setPlayers] = useState([])
   const [isLoading, setIsLoading] = useState(true)
-  const [isMember, setIsMember] = useState(checkIsMember())
+  const [isMember, setIsMember] = useState(false)
   const [defaultFormations, setDefaultFormations] = useState([])
-
+  const [token, setToken] = useState(null);
   const [selectedFormationId, setSelectedFormationId] = useState('61e81a2ae5ff8cafe1a93497')
   const [selectedFormation, setSelectedFormation] = useState(
     [
 
-        {
-            x: "700",
-            y: "360"
-        },
+      {
+        x: "700",
+        y: "360"
+      },
 
-        {
-            x: "600",
-            y: "420"
-        },
+      {
+        x: "600",
+        y: "420"
+      },
 
-        {
-            x: "700",
-            y: "600"
-        },
+      {
+        x: "700",
+        y: "600"
+      },
 
-        {
-            x: "700",
-            y: "670"
-        },
+      {
+        x: "700",
+        y: "670"
+      },
 
-        {
-            x: "800",
-            y: "420"
-        }
+      {
+        x: "800",
+        y: "420"
+      }
 
     ])
+
+  // const addUserToLocalStorage = ({ userInfo, token }) => {
+  // localStorage.setItem('user', JSON.stringify(userInfo))
+  // localStorage.setItem('token', token)
+  // }
+
+  // const removeUserFromLocalStorage = () => {
+  //   localStorage.removeItem('token')
+  //   localStorage.removeItem('user')
+  // }
+
+
+
+  const registerUser = async (currentUser) => {
+    setIsLoading(true)
+    try {
+      const response = await axios.post(url + '/users/add', currentUser)
+      console.log(response);
+      const { newUser, token } = response.data
+      setIsLoading(false)
+      setToken(token)
+      setUserInfo(newUser)
+
+      // addUserToLocalStorage(userInfo, token)
+      localStorage.setItem('user', JSON.stringify(newUser))
+      localStorage.setItem('token', token)
+      setIsMember(true)
+
+    } catch (error) {
+      alert(error.response.data)
+      setIsLoading(false);
+    }
+  }
+
+
+
+  const localToken = localStorage.getItem('token')
+  const localUserInfo = localStorage.getItem('user')
+
   const initialState = {
     isLoading: isLoading,
     isMember: isMember,
@@ -62,12 +93,19 @@ function App() {
     selectedFormation: selectedFormation,
     setSelectedFormation,
     setSelectedFormationId,
-    userInfo: userInfo,
+    userInfo: localUserInfo ? JSON.parse(localUserInfo) : null,
+    token: localToken || token,
     players: players,
-    setPlayers
-  }
+    setPlayers,
+    registerUser,
+    setIsMember
 
+  }
   const url = 'http://localhost:5001'
+
+
+
+
   const fetch = () => {
     axios.get(url + '/defaultformations')
       .then(function (response) {
@@ -80,9 +118,8 @@ function App() {
   }
 
   const fetch2 = () => {
-    axios.get(url + '/users/61e2d0df820086dcd7c8b738')
+    axios.get(url + '/users/61e97b9fea33142f377fde98')
       .then(function (response) {
-        setUserInfo(response.data)
         setPlayers(response.data.players)
       })
       .catch(function (error) {

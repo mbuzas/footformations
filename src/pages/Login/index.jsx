@@ -1,21 +1,23 @@
-import { useState } from "react"
-
+import { useEffect, useState } from "react"
+import { useContext } from "react/cjs/react.development"
 import FormRow from '../../components/FormRow'
+import AppContext from "../../context/appContext"
+import { useNavigate } from "react-router-dom"
 import './Login.css'
 const initialState = {
-    name: '',
+    username: '',
     email: '',
     password: '',
-    isMember: true,
 }
 
 
 const Login = () => {
-
+    const navigate = useNavigate();
+    const { userInfo, registerUser, isLoading, isMember, setIsMember } = useContext(AppContext)
     const [values, setValues] = useState(initialState)
 
     const toggleMember = () => {
-        setValues({ ...values, isMember: !values.isMember })
+        setIsMember(!isMember)
     }
 
     const handleChange = (e) => {
@@ -24,24 +26,45 @@ const Login = () => {
 
     const onSubmit = (e) => {
         e.preventDefault()
+
+        const { username, email, password, isMember } = values
+
+        if (!email || !password || (!isMember && !username)) {
+            alert('Please fill all values');
+            return
+        }
+
+        const currentUser = { username, email, password }
+        if (!isMember) {
+            registerUser(currentUser)
+
+        }
         console.log(values);
     }
+    useEffect(() => {
+        if (userInfo) {
+
+            navigate('/')
+            setIsMember(true)
+        }
+
+    }, [userInfo, navigate]);
 
 
 
     return (
 
         <form className="form" onSubmit={onSubmit}>
-            <h3>{values.isMember ? "Login" : "Register"}</h3>
-            {!values.isMember &&
-                <FormRow type="text" name="name" value={values.name} handleChange={handleChange} />
+            <h3>{isMember ? "Login" : "Register"}</h3>
+            {!isMember &&
+                <FormRow type="text" name="username" value={values.username} handleChange={handleChange} />
             }
             <FormRow type="email" name="email" value={values.email} handleChange={handleChange} />
             <FormRow type="password" name="password" value={values.password} handleChange={handleChange} />
-            <button type="submit" className="btn btn-block">Submit</button>
+            <button type="submit" className="btn btn-block" disabled={isLoading}>Submit</button>
             <p>
-                {values.isMember ? 'Not a member yet?' : 'Already a member?'}
-                <button type="button" onClick={toggleMember} className="member-btn">{values.isMember ? 'Register' : 'Login'}</button>
+                {isMember ? 'Not a member yet?' : 'Already a member?'}
+                <button type="button" onClick={toggleMember} className="member-btn" >{isMember ? 'Register' : 'Login'}</button>
             </p>
         </form>
 

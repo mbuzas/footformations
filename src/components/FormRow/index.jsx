@@ -1,7 +1,7 @@
 
 
 
-const FormRow = ({ type, name, value, handleChange }) => {
+const FormRow = ({ type, name, value, min, handleChange }) => {
 
     return (
 
@@ -9,7 +9,7 @@ const FormRow = ({ type, name, value, handleChange }) => {
             <label htmlFor={name} className="form-label">
                 {name}
             </label>
-            <input type={type} value={value.name} name={name} onChange={handleChange} className="form-input" />
+            <input type={type} value={value.username} name={name} onChange={handleChange} className="form-input" />
         </div>
 
     )

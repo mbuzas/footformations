@@ -4,6 +4,9 @@ import mongoose from 'mongoose'
 import bodyParser from 'body-parser';
 import morgan from 'morgan'
 import dotenv from 'dotenv'
+import defaultFormationsRouter from './routes/defaultformations.js'
+import userFormationsRouter from './routes/userformations.js'
+import usersRouter from './routes/users.js'
 dotenv.config()
 
 const app = express();
@@ -30,9 +33,7 @@ connection.once('open', () => {
 
 
 
-import defaultFormationsRouter from './routes/defaultformations.js'
-import userFormationsRouter from './routes/userformations.js'
-import usersRouter from './routes/users.js'
+
 
 app.use('/defaultformations', defaultFormationsRouter);
 app.use('/userformations', userFormationsRouter);

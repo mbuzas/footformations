@@ -1,6 +1,6 @@
 import express, { Router } from 'express'
-const router = express.Router();
 import UserFormation from '../models/userFormation.model.js'
+const router = express.Router();
 
 router.route('/').get((req, res) => {
     UserFormation.find()

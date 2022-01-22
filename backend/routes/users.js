@@ -1,6 +1,6 @@
 import express, { Router } from 'express'
-const router = express.Router();
 import User from '../models/user.model.js'
+const router = express.Router();
 
 
 router.route('/').get((req, res) => {
@@ -34,13 +34,14 @@ router.route('/login').post(async (req, res) => {
         console.log('pleasse fill all values');
     }
     const user = await User.findOne({ email }).select('+password')
-    // console.log(user);
     if (!user) {
         console.log('inavlid credentials');
+        return
     }
     const isPasswordCorrect = await user.comparePassword(password)
     if (!isPasswordCorrect) {
         console.log('inavlid credentials');
+        return
     }
     const token = user.createJWT()
     user.password = undefined

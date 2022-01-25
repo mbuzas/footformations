@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 
 
 
@@ -12,7 +13,7 @@ const FormRow = ({ type, name, value, min, handleChange }) => {
             <input type={type} value={value.username} name={name} onChange={handleChange} className="form-input" />
         </div>
 
-    )
-}
+    );
+};
 
-export default FormRow
+export default FormRow;

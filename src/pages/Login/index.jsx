@@ -1,53 +1,54 @@
-import { useEffect, useState } from "react"
-import { useContext } from "react/cjs/react.development"
-import FormRow from '../../components/FormRow'
-import AppContext from "../../context/appContext"
-import { useNavigate } from "react-router-dom"
-import './Login.css'
+/* eslint-disable react/react-in-jsx-scope */
+import { useEffect, useState } from "react";
+import { useContext } from "react/cjs/react.development";
+import FormRow from "../../components/FormRow";
+import AppContext from "../../context/appContext";
+import { useNavigate } from "react-router-dom";
+import "./Login.css";
 const initialState = {
-    username: '',
-    email: '',
-    password: '',
-}
+    username: "",
+    email: "",
+    password: "",
+};
 
 
 const Login = () => {
     const navigate = useNavigate();
-    const { userInfo, registerUser, isLoading, isMember, setIsMember } = useContext(AppContext)
-    const [values, setValues] = useState(initialState)
+    const { userInfo, registerUser, isLoading, isMember, setIsMember, loginUser } = useContext(AppContext);
+    const [values, setValues] = useState(initialState);
 
     const toggleMember = () => {
-        setIsMember(!isMember)
-    }
+        setIsMember(!isMember);
+    };
 
     const handleChange = (e) => {
-        setValues({ ...values, [e.target.name]: e.target.value })
-    }
+        setValues({ ...values, [e.target.name]: e.target.value });
+    };
 
     const onSubmit = (e) => {
-        e.preventDefault()
+        e.preventDefault();
 
-        const { username, email, password, isMember } = values
+        const { username, email, password } = values;
 
         if (!email || !password || (!isMember && !username)) {
-            alert('Please fill all values');
-            return
+            console.log("please fill");
+            return;
         }
 
-        const currentUser = { username, email, password }
-        if (!isMember) {
-            registerUser(currentUser)
-
+        const currentUser = { username, email, password };
+        if (isMember) {
+            loginUser(currentUser);
+        } else {
+            registerUser(currentUser);
         }
-        console.log(values);
-    }
+
+    };
     useEffect(() => {
         if (userInfo) {
-
-            navigate('/')
-            setIsMember(true)
+            setTimeout(() => {
+                navigate("/");
+            }, 1000);
         }
-
     }, [userInfo, navigate]);
 
 
@@ -63,12 +64,12 @@ const Login = () => {
             <FormRow type="password" name="password" value={values.password} handleChange={handleChange} />
             <button type="submit" className="btn btn-block" disabled={isLoading}>Submit</button>
             <p>
-                {isMember ? 'Not a member yet?' : 'Already a member?'}
-                <button type="button" onClick={toggleMember} className="member-btn" >{isMember ? 'Register' : 'Login'}</button>
+                {isMember ? "Not a member yet?" : "Already a member?"}
+                <button type="button" onClick={toggleMember} >{isMember ? "Register" : "Login"}</button>
             </p>
         </form>
 
-    )
-}
+    );
+};
 
-export default Login
+export default Login;

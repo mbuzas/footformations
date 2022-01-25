@@ -48,4 +48,29 @@ router.route('/login').post(async (req, res) => {
     res.status(200).json({ user, token })
 });
 
+
+router.route('/:id').patch(async (req, res) => {
+    await User.findByIdAndUpdate(
+        req.params.id,
+        { $push: { "players": { "no": req.body.no, "name": req.body.name } } },
+        { safe: true, upsert: true, new: true },
+    )
+    const user = await User.findById(req.params.id)
+    res.status(200).json({ user })
+});
+router.route('/:id/removeplayer').patch(async (req, res) => {
+    try {
+        await User.findByIdAndUpdate(
+            req.params.id,
+            // console.log(req.body.id)
+            { $pull: { "players": { _id: req.body.id } } },
+            { safe: true, upsert: true, new: true },
+        )
+        const user = await User.findById(req.params.id)
+        res.status(200).json({ user })
+    }
+    catch (e) {
+        console.log(e);
+    }
+});
 export default router

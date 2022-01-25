@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 
 const FormationTile = () => {
     return (
@@ -8,7 +8,7 @@ const FormationTile = () => {
             <div className="formation-title">Title 1x3x1</div>
         </div>
 
-    )
-}
+    );
+};
 
-export default FormationTile
+export default FormationTile;

@@ -26,11 +26,11 @@ router.route('/:id').get((req, res) => {
         .then((formation) => res.json(formation))
         .catch((err => res.status(400).json('Error:' + err)));
 })
-router.route('/:id').delete((req, res) => {
-    DefaultFormation.findByIdAndDelete(req.params.id)
-        .then(() => res.json('Default Formation deleted'))
-        .catch(err => res.status(400).json('Error' + err))
-})
+// router.route('/:id').delete((req, res) => {
+//     DefaultFormation.findByIdAndDelete(req.params.id)
+//         .then(() => res.json('Default Formation deleted'))
+//         .catch(err => res.status(400).json('Error' + err))
+// })
 
 // router.route('/update/:id').post((req, res) => {
 //     DefaultFormation.findById(req.params.id)

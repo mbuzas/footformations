@@ -1,7 +1,7 @@
 .pitch {
     width: 40%;
     margin: 0.5em 3em 0em 3em;
-
+    position: relative;
 }
 
 .pitch img {
@@ -21,7 +21,7 @@
 .circle {
     width: 30px;
     height: 30px;
-    position: absolute;
+    position:static;
     background-color: red;
     border-radius: 50%;
     top: 100px;

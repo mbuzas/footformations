@@ -9,11 +9,6 @@ footer {
 
 .footer-block {
     padding: 2em 4em;
-    justify-content: space-between;
+    justify-content: center;
     display: flex;
-}
-
-.export:hover, .webpage:hover {
-    text-decoration: underline;
-    cursor: pointer;
 }

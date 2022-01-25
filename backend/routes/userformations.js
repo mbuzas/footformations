@@ -7,6 +7,11 @@ router.route('/').get((req, res) => {
         .then(formations => res.json(formations))
         .catch(err => res.status(400).json('Error: ' + err));
 });
+router.route('/').post((req, res) => {
+    UserFormation.find({ "createdBy": req.body.createdBy })
+        .then(formations => res.json(formations))
+        .catch(err => res.status(400).json('Error: ' + err));
+});
 
 router.route('/add').post((req, res) => {
     const title = req.body.title;

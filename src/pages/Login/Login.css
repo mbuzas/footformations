@@ -1,8 +1,40 @@
 .form {
-    max-width: 400px;
     display: flex;
+    margin-top: 5em;
     border-top: 5px solid var(--primary-500);
     flex-direction: column;
+    color: white;
+    border-radius: 0.5em;
+    padding: 1em;
+    background-color: #00A000;
+}
+
+.form-row {
+    text-transform: capitalize;
+}
+.form-row input {
+    border-radius: 4px;
+    width: 100%;
+}
+
+.form button {
+    font-size: 16px;
+    padding: 0.34em 0.5em;
+    right: 35%;
+    border: none;
+    border-left: #cfcfcf 2px solid;
+    transition: cubic-bezier(0.075, 0.82, 0.165, 1) 0.5s;
+    border-radius: 0.5em;
+    cursor: pointer;
+
+}
+
+.form button:hover {
+    color: white;
+    background-color: #00A000;
+    border-left: none;
+    transition: cubic-bezier(0.075, 0.82, 0.165, 1) 0.5s;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 h3 {
@@ -19,10 +51,3 @@ p {
     margin-top: 1rem;
 }
 
-.member-btn {
-    background: transparent;
-    border: transparent;
-    color: var(--primary-500);
-    cursor: pointer;
-    letter-spacing: var(--letterSpacing);
-}

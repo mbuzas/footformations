@@ -8,7 +8,7 @@
 .players-block {
     color: white;
     border-radius: 0.5em;
-
+    min-height: 350px;
     padding: 1em;
     background-color: #00A000;
     /* min-height: 425px; */

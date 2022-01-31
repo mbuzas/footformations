@@ -3,17 +3,18 @@ import AppContext from "../../context/appContext";
 import "./Pitch.css";
 import PlayerCircle from "./PlayerCircle";
 import axios from "axios";
-
+import CoordinatesContext from "../../context/coordinatesContext";
 
 const Pitch = () => {
-
     const { setSelectedFormation, selectedFormation, selectedFormationId, url, formationType } = useContext(AppContext);
+    const { setNewCoordinates } = useContext(CoordinatesContext);
+    const [formationSpotsArray, setFormationSpotsArray] = useState(null);
+    const [offsetTop, setOffsetTop] = useState();
+    const [offsetLeft, setOffsetLeft] = useState();
+    const [pitchHeight, setPitchHeight] = useState();
+    const [pitchWidth, setPitchWidth] = useState();
 
     useEffect(() => {
-        getSelectedFormation()
-    }, [selectedFormationId]);
-
-    const getSelectedFormation = () => {
         axios.get(url + `/${formationType}/${selectedFormationId}`)
             .then(function (response) {
                 setSelectedFormation(response.data.coordinates);
@@ -22,55 +23,55 @@ const Pitch = () => {
                 console.log(error);
             });
 
-    };
+    }, [formationType, selectedFormationId, url, setSelectedFormation]);
+
 
     const allowDrop = (ev) => {
-        ev.preventDefault();
+        // ev.preventDefault();
     };
 
 
     const onDrop = (ev) => {
         ev.preventDefault();
-        var id = ev.dataTransfer.getData("text");
-        const draggableElement = document.getElementById(id);
-        const dropzone = ev.target;
-        dropzone.appendChild(draggableElement);
+        let data = ev.dataTransfer.getData("text");
+        const draggableElement = document.getElementById(data);
+        ev.target.appendChild(draggableElement);
         ev.dataTransfer.clearData();
     };
 
     const refContainer = useRef(null);
-    // const [pitchDiv, setPitchDiv] = useState(null);
-    // setPitchDiv(refContainer)
-    const [formationSpotsArray, setFormationSpotsArray] = useState(null);
+
+    useEffect(() => {
+        const pitchDiv = refContainer.current;
+        setPitchHeight(refContainer.current.clientHeight)
+        setPitchWidth(refContainer.current.clientWidth)
+        const pitchHeight = (pitchDiv.offsetTop)
+        const pitchWidth = (pitchDiv.offsetLeft)
+        setOffsetTop(pitchHeight);
+        setOffsetLeft(pitchWidth);
+    }, [selectedFormation, refContainer]);
 
 
     const getCoordinates = () => {
         const pitchDiv = refContainer.current;
         const formationSpots = pitchDiv.children;
-        setFormationSpotsArray([].slice.call(formationSpots))
+        setFormationSpotsArray([].slice.call(formationSpots));
         const newCoordinates =
             formationSpotsArray && formationSpotsArray.map((spot) => {
-                return ({ "x": spot.style.left, "y": spot.style.top });
+                return ({ "x": parseInt(spot.style.left.replace("px", "")), "y": parseInt(spot.style.top.replace("px", "")) });
             })
-        console.log(newCoordinates);
+        setNewCoordinates(newCoordinates);
     }
 
-
     return (
-
-        <div className="pitch">
+        <div className="pitch"  >
             <h3>Pitch</h3>
-
             <div className="pitch-block" ref={refContainer} onDragOver={allowDrop} onDrop={onDrop} >
                 {selectedFormation.map((formation) => {
-                    return (<PlayerCircle key={formation._id} getCoordinates={getCoordinates} x={formation.x} y={formation.y} />)
+                    return (<PlayerCircle key={formation._id} pitchHeight={pitchHeight} pitchWidth={pitchWidth} x={formation.x} y={formation.y} offsetTop={offsetTop} offsetLeft={offsetLeft} getCoordinates={getCoordinates} />)
                 })}
-                <button onClick={getCoordinates}>click</button>
             </div>
-
-
         </div >
-
     );
 };
 export default Pitch;

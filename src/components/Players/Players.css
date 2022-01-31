@@ -1,8 +1,28 @@
 .players {
     width: 40%;
-
-
     margin: 0.5em 3em 0em 3em;
+}
+
+.close-btn {
+    cursor: pointer;
+    margin-left: 0.5em;
+    transform: rotateZ(0deg);
+    transition: 0.3s ease-in-out all;
+}
+
+
+img {
+    height: 12px;
+}
+
+.close-btn:hover {
+    transform: rotateZ(90deg);
+    transition: 0.3s ease-in-out all;
+}
+
+th {
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 .players-block {
@@ -11,7 +31,8 @@
     min-height: 350px;
     padding: 1em;
     background-color: #00A000;
-    /* min-height: 425px; */
+    max-height: 350px;
+    /* overflow-y: scroll; */
 }
 
 .player-input {
@@ -50,7 +71,7 @@ form {
     font-size: 17.25px;
     padding: 0.25em 0.5em;
     right: 0;
-
+    cursor: pointer;
     border: none;
     border-left: #00A000 2px solid;
     transition: cubic-bezier(0.075, 0.82, 0.165, 1) 0.5s;
@@ -61,7 +82,6 @@ form {
     color: white;
     background-color: #00A000;
     border-left: none;
-    /* outline: 1px #fff solid; */
     border-radius: 0em 0.25em 0.25em 0;
     transition: cubic-bezier(0.075, 0.82, 0.165, 1) 0.5s;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;

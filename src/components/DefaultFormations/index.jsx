@@ -1,13 +1,14 @@
 import React, { useContext, useEffect, useState } from "react";
 import "./DefaultFormations.css";
-
 import AppContext from "../../context/appContext";
 import axios from "axios";
 
 const DefaultFormations = () => {
-    const { setSelectedFormationId, url, setIsLoading, setFormationType } = useContext(AppContext);
+    const { setSelectedFormationId, url, setFormationType } = useContext(AppContext);
     const [defaultFormations, setDefaultFormations] = useState([]);
-    const getDefaultFormations = () => {
+
+
+    useEffect(() => {
         axios.get(url + "/defaultformations")
             .then(function (response) {
                 setDefaultFormations(response.data);
@@ -15,12 +16,8 @@ const DefaultFormations = () => {
             .catch(function (error) {
                 console.log(error);
             });
-    };
+    }, [url]);
 
-    useEffect(() => {
-        getDefaultFormations();
-        setIsLoading(false);
-    }, []);
     const handleSelect = (e) => {
         setSelectedFormationId(e.target.value);
         setFormationType(e.target.id)

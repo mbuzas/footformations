@@ -10,20 +10,21 @@ import AppContext from "./context/appContext";
 function App() {
 
   const navigate = useNavigate();
-  const [userInfo, setUserInfo] = useState(null);
 
+  const [userInfo, setUserInfo] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isMember, setIsMember] = useState(true);
-
   const [token, setToken] = useState(null);
-  const [selectedFormationId, setSelectedFormationId] = useState("61e81a2ae5ff8cafe1a93497");
+  const [selectedFormationId, setSelectedFormationId] = useState("61f50f0caffea582c89e8cf9");
   const [selectedFormation, setSelectedFormation] = useState([]);
   const [formationType, setFormationType] = useState('defaultformations')
+  const [userFormations, setUserFormations] = useState([]);
 
   const localToken = localStorage.getItem("token");
   const localUserInfo = localStorage.getItem("user");
 
   const url = "http://localhost:5001";
+
   const registerUser = async (currentUser) => {
     setIsLoading(true);
     try {
@@ -43,10 +44,10 @@ function App() {
       setIsLoading(false);
     }
   };
+
   const loginUser = async (currentUser) => {
     try {
       const response = await axios.post(url + "/users/login", currentUser);
-      console.log(response);
       const { user, token } = response.data;
       const newUser = user;
       setUserInfo(newUser);
@@ -70,7 +71,6 @@ function App() {
     navigate("/login");
   };
 
-
   const initialState = {
     isLoading: isLoading,
     isMember: isMember,
@@ -88,33 +88,21 @@ function App() {
     loginUser,
     removeUserFromLocalStorage,
     formationType: formationType,
-    setFormationType
+    setFormationType,
+    userFormations: userFormations,
+    setUserFormations
   };
-
-  // const addUserToLocalStorage = ({ userInfo, token }) => {
-  // localStorage.setItem("user", JSON.stringify(userInfo))
-  // localStorage.setItem("token", token)
-  // }
-
-  // const removeUserFromLocalStorage = () => {
-  //   localStorage.removeItem("token")
-  //   localStorage.removeItem("user")
-  // }
-
 
 
   return (
     <AppContext.Provider value={initialState}>
       <div className="App">
-
         <main>
           {isLoading ? <Loading /> :
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="login" element={<Login />} />
             </Routes>}
-
-
         </main>
       </div>
     </AppContext.Provider>

@@ -2,7 +2,7 @@
 
 
 
-const FormRow = ({ type, name, value, min, handleChange }) => {
+const FormRow = ({ type, name, value, handleChange }) => {
 
     return (
 

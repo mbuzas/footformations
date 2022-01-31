@@ -3,12 +3,12 @@ import AppContext from "../../context/appContext";
 import AddFormation from "../AddFormation";
 import "./Players.css";
 import axios from "axios";
-
+import deleteBtn from "../../assets/x.svg"
 const Players = () => {
-    const url = "http://localhost:5001";
-    const { userInfo, setUserInfo } = useContext(AppContext);
+
+    const { userInfo, setUserInfo, url } = useContext(AppContext);
     const [players, setPlayers] = useState(userInfo ? userInfo.players : null);
-    const getRandNum = () => Math.floor(Math.random() * 100);
+    const getRandNum = () => Math.floor(Math.random() * 100000);
     const [inputNo, setInputNo] = useState("");
     const [inputName, setInputName] = useState("");
     const handleOnChangeNo = (e) => {
@@ -19,40 +19,35 @@ const Players = () => {
     };
 
 
-
     const handleOnSubmit = async (ev) => {
-        ev.preventDefault();
         const newPlayer = { no: inputNo, name: inputName, _id: getRandNum() };
         setInputNo("");
         setInputName("");
-        await updateUser(newPlayer)
+        await updateUser(newPlayer);
     };
 
     const updateUser = async (newPlayer) => {
         try {
             const response = await axios.patch(url + `/users/${userInfo._id}`, newPlayer);
-
             localStorage.setItem("user", JSON.stringify(response.data.user));
             const user = localStorage.getItem("user");
-            await setUserInfo(user)
+            await setUserInfo(user);
         } catch (error) {
             alert(error.response.data);
         }
     };
 
 
-
     const handleRemovePlayer = async (ev) => {
-        console.log(ev.target.id);
-        const playerToDelete = ev.target.id
-        await removePlayer(playerToDelete)
+        const playerToDelete = ev.target.id;
+        await removePlayer(playerToDelete);
     }
     const removePlayer = async (playerToDelete) => {
         try {
             const response = await axios.patch(url + `/users/${userInfo._id}/removeplayer`, { id: playerToDelete });
             localStorage.setItem("user", JSON.stringify(response.data.user));
             const user = localStorage.getItem("user");
-            await setUserInfo(user)
+            await setUserInfo(user);
         } catch (error) {
             alert(error.response.data);
         }
@@ -60,7 +55,11 @@ const Players = () => {
 
 
     useEffect(() => {
-        setPlayers(userInfo.players)
+
+        if (userInfo) {
+            setPlayers(userInfo.players);
+        };
+
     }, [userInfo]);
 
 
@@ -71,8 +70,8 @@ const Players = () => {
             <div className="players-block">
                 <div className="player-input">
                     <form>
-                        <input type="number" name="" required value={inputNo} id="number" maxLength={2} placeholder="No." onChange={handleOnChangeNo} />
-                        <input type="text" name="" required value={inputName} id="name" maxLength={20} placeholder="Name" onChange={handleOnChangeName} />
+                        <input type="number" name="" required value={inputNo} id="number" maxLength="2" placeholder="No." onChange={handleOnChangeNo} />
+                        <input type="text" name="" required value={inputName} id="name" maxLength="20" placeholder="Name" onChange={handleOnChangeName} />
                         <button className="btn-players" type="submit" onClick={handleOnSubmit}>+</button>
                     </form>
                 </div>
@@ -88,13 +87,12 @@ const Players = () => {
                             return (
 
                                 <tr key={getRandNum()}>
-
                                     <th>{player.no}</th>
                                     <th>{player.name}
-                                        <button id={player._id} onClick={handleRemovePlayer}>X</button>
                                     </th>
-
-
+                                    <th>
+                                        <img id={player._id} className="close-btn" onClick={handleRemovePlayer} src={deleteBtn} alt="" />
+                                    </th>
                                 </tr>
 
                             );

@@ -20,6 +20,7 @@ form {
     border-left: #cfcfcf 2px solid;
     transition: cubic-bezier(0.075, 0.82, 0.165, 1) 0.5s;
     border-radius: 0em 0.5em 0.5em 0;
+    cursor: pointer;
 }
 
 .btn-add:hover {
